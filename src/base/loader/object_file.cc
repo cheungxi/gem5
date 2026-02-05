@@ -83,6 +83,8 @@ archToString(Arch arch)
         return "riscv64";
       case Riscv32:
         return "riscv32";
+      case LoongArch:
+        return "loongarch";
       default:
         panic("Unrecognized arch %d.", arch);
     }

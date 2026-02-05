@@ -278,6 +278,8 @@ ElfObject::determineArch()
         arch = Power;
     } else if (emach == EM_PPC64 && eclass == ELFCLASS64) {
         arch = Power64;
+    } else if (emach == EM_LOONGARCH) {
+        arch = LoongArch;
     } else {
         warn("Unknown architecture: %d\n", emach);
     }
