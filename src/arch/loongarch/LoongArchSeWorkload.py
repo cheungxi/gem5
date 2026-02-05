@@ -1,4 +1,5 @@
-# Copyright 2021 Google, Inc.
+# Copyright (c) 2024 Loongson Technology Corporation Limited
+# All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -23,21 +24,16 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import m5.defines
+from m5.objects.Workload import SEWorkload
 
-arch_vars = [
-    "USE_ARM_ISA",
-    "USE_LOONGARCH_ISA",
-    "USE_MIPS_ISA",
-    "USE_POWER_ISA",
-    "USE_RISCV_ISA",
-    "USE_SPARC_ISA",
-    "USE_X86_ISA",
-]
 
-enabled = list(filter(lambda var: m5.defines.buildEnv[var], arch_vars))
+class LoongArchSEWorkload(SEWorkload):
+    type = "LoongArchSEWorkload"
+    cxx_class = "gem5::LoongArchISA::SEWorkload"
+    cxx_header = "arch/loongarch/se_workload.hh"
 
-if len(enabled) == 1:
-    arch = enabled[0]
-    if arch == "USE_ARM_ISA":
-        from m5.objects.ArmCPU import ArmO3Checker as O3Checker
+
+class LoongArchEmuLinux(LoongArchSEWorkload):
+    type = "LoongArchEmuLinux"
+    cxx_class = "gem5::LoongArchISA::EmuLinux"
+    cxx_header = "arch/loongarch/linux/se_workload.hh"

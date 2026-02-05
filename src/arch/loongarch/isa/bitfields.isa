@@ -1,0 +1,17 @@
+// Copyright (c) 2024 Loongson Technology Corporation Limited
+// All rights reserved.
+
+// Bitfield definitions for LoongArch instructions
+
+// LoongArch instruction formats use fixed-length 32-bit encoding
+def bitfield OPCODE  <31:26>;
+def bitfield RD      <4:0>;
+def bitfield RJ      <9:5>;
+def bitfield RK      <14:10>;
+def bitfield IMM     <31:0>;
+def bitfield SI12    <21:10>;  // 12-bit signed immediate
+def bitfield SI14    <23:10>;  // 14-bit signed immediate
+def bitfield SI16    <25:10>;  // 16-bit signed immediate
+def bitfield SI20    <24:5>;   // 20-bit signed immediate
+def bitfield UI5     <14:10>;  // 5-bit unsigned immediate
+def bitfield UI6     <15:10>;  // 6-bit unsigned immediate

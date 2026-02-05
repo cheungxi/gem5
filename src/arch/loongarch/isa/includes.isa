@@ -1,0 +1,36 @@
+// Copyright (c) 2024 Loongson Technology Corporation Limited
+// All rights reserved.
+
+// Include directives
+
+output header {{
+#include <cstdint>
+
+#include "arch/loongarch/insts/static_inst.hh"
+#include "cpu/static_inst.hh"
+}};
+
+output decoder {{
+#include "arch/loongarch/decoder.hh"
+#include "base/loader/symtab.hh"
+#include "base/cprintf.hh"
+#include "cpu/thread_context.hh"
+}};
+
+output exec {{
+#include "arch/generic/cpu_exec_context.hh"
+#include "arch/generic/memhelpers.hh"
+#include "arch/loongarch/regs/int.hh"
+#include "base/condcodes.hh"
+#include "cpu/base.hh"
+#include "cpu/exetrace.hh"
+#include "mem/packet.hh"
+#include "mem/packet_access.hh"
+#include "sim/faults.hh"
+#include "sim/full_system.hh"
+#include "sim/sim_exit.hh"
+
+#include <cmath>
+
+using namespace LoongArchISA;
+}};

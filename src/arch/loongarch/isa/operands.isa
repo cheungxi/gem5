@@ -1,0 +1,21 @@
+// Copyright (c) 2024 Loongson Technology Corporation Limited
+// All rights reserved.
+
+// Operand definitions for LoongArch
+
+def operands {{
+    # Integer register operands
+    'Rd': IntRegOp('uw', 'RD', 'IsInteger', 1),
+    'Rj': IntRegOp('uw', 'RJ', 'IsInteger', 2),
+    'Rk': IntRegOp('uw', 'RK', 'IsInteger', 3),
+    
+    # Immediate operands
+    'Imm': IntRegOp('uw', 'IMM', 'IsInteger', 4),
+    
+    # Memory operands
+    'Mem': MemOp('uw', None, ('IsMemRef', 'IsLoad', 'IsStore'), 5),
+    
+    # PC
+    'PC': PCStateOp('uw', 'pc', (None, None, 'IsControl'), 6),
+    'NPC': PCStateOp('uw', 'npc', (None, None, 'IsControl'), 7),
+}};

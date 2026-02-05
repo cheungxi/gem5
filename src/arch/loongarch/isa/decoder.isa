@@ -1,0 +1,9 @@
+// Copyright (c) 2024 Loongson Technology Corporation Limited
+// All rights reserved.
+
+// Decoder for LoongArch instructions
+
+decode OPCODE {
+    // Placeholder decoder - returns Unknown instruction for all opcodes
+    default: Unknown::unknown();
+}

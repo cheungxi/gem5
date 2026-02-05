@@ -1,0 +1,8 @@
+// Copyright (c) 2024 Loongson Technology Corporation Limited
+// All rights reserved.
+
+// Unknown instruction format
+
+def format Unknown() {{
+    decode_block = 'return new Unknown(machInst);\n'
+}};

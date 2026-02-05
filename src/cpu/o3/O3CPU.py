@@ -27,6 +27,7 @@ import m5.defines
 
 arch_vars = [
     "USE_ARM_ISA",
+    "USE_LOONGARCH_ISA",
     "USE_MIPS_ISA",
     "USE_POWER_ISA",
     "USE_RISCV_ISA",
@@ -40,6 +41,8 @@ if len(enabled) == 1:
     arch = enabled[0]
     if arch == "USE_ARM_ISA":
         from m5.objects.ArmCPU import ArmO3CPU as O3CPU
+    elif arch == "USE_LOONGARCH_ISA":
+        from m5.objects.LoongArchCPU import LoongArchO3CPU as O3CPU
     elif arch == "USE_MIPS_ISA":
         from m5.objects.MipsCPU import MipsO3CPU as O3CPU
     elif arch == "USE_POWER_ISA":
