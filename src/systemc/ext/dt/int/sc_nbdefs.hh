@@ -94,11 +94,10 @@ enum sc_numrep
     SC_CSD
 };
 
-
 // Sign of a number:
-#define SC_NEG -1 // Negative number
-#define SC_ZERO 0 // Zero
-#define SC_POS 1 // Positive number
+#define SC_NEG -1   // Negative number
+#define SC_ZERO 0   // Zero
+#define SC_POS 1    // Positive number
 #define SC_NOSIGN 2 // Uninitialized sc_signed number
 
 typedef unsigned char uchar;
@@ -137,7 +136,7 @@ typedef int small_type;
 #define HALF_DIGIT_MASK (HALF_DIGIT_RADIX - 1)
 
 // DIV_CEIL2(x, y) = ceil(x / y). x and y are positive numbers.
-#define DIV_CEIL2(x, y) (((x) - 1) / (y) + 1)
+#define DIV_CEIL2(x, y) (((x)-1) / (y) + 1)
 
 // DIV_CEIL(x) = ceil(x / BITS_PER_DIGIT) = the number of digits to
 // store x bits. x is a positive number.
@@ -164,7 +163,8 @@ typedef unsigned int sc_digit; // 32-bit unsigned integer
 
 // Support for the long long type. This type is not in the standard
 // but is usually supported by compilers.
-#if defined(__x86_64__) || defined(__aarch64__) || defined(__powerpc64__)
+#if defined(__x86_64__) || defined(__aarch64__) || defined(__powerpc64__) ||  \
+    defined(__loongarch64)
 typedef long long int64;
 typedef unsigned long long uint64;
 #else
@@ -175,7 +175,6 @@ typedef uint64_t uint64;
 static const uint64 UINT64_ZERO = 0ULL;
 static const uint64 UINT64_ONE = 1ULL;
 static const uint64 UINT64_32ONES = 0x00000000ffffffffULL;
-
 
 // Bits per ...
 // will be deleted in the future. Use numeric_limits instead
