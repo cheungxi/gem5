@@ -1,0 +1,13 @@
+// Copyright (c) 2024 Loongson Technology Corporation Limited
+// All rights reserved.
+
+// Basic instruction format
+
+def format BasicOp(code, *opt_flags) {{
+    iop = InstObjParams(name, Name, 'LoongArchStaticInst',
+                        code, opt_flags)
+    header_output = BasicDeclare.subst(iop)
+    decoder_output = BasicConstructor.subst(iop)
+    decode_block = BasicDecode.subst(iop)
+    exec_output = BasicExecute.subst(iop)
+}};

@@ -1,0 +1,86 @@
+# -*- mode:python -*-
+
+# Copyright (c) 2024 Loongson Technology Corporation Limited
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met: redistributions of source code must retain the above copyright
+# notice, this list of conditions and the following disclaimer;
+# redistributions in binary form must reproduce the above copyright
+# notice, this list of conditions and the following disclaimer in the
+# documentation and/or other materials provided with the distribution;
+# neither the name of the copyright holders nor the names of its
+# contributors may be used to endorse or promote products derived from
+# this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+# OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+# SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+# LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+# DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+# THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+Import('*')
+
+if not env['CONF']['USE_LOONGARCH_ISA']:
+    Return()
+
+env.TagImplies('loongarch isa', 'gem5 lib')
+
+env.TagImplies('isa', 'loongarch isa')
+
+Source('decoder.cc', tags=['loongarch isa'])
+Source('faults.cc', tags=['loongarch isa'])
+Source('insts/static_inst.cc', tags=['loongarch isa'])
+Source('isa.cc', tags=['loongarch isa'])
+Source('linux/linux.cc', tags=['loongarch isa'])
+Source('linux/process.cc', tags=['loongarch isa'])
+Source('linux/se_workload.cc', tags=['loongarch isa'])
+Source('pagetable.cc', tags=['loongarch isa'])
+Source('process.cc', tags=['loongarch isa'])
+Source('remote_gdb.cc', tags=['loongarch isa'])
+Source('se_workload.cc', tags=['loongarch isa'])
+Source('tlb.cc', tags=['loongarch isa'])
+
+SimObject(
+    'LoongArchDecoder.py',
+    sim_objects=['LoongArchDecoder'],
+    tags=['loongarch isa']
+)
+SimObject(
+    'LoongArchInterrupts.py',
+    sim_objects=['LoongArchInterrupts'],
+    tags=['loongarch isa']
+)
+SimObject(
+    'LoongArchISA.py',
+    sim_objects=['LoongArchISA'],
+    tags=['loongarch isa']
+)
+SimObject(
+    'LoongArchMMU.py',
+    sim_objects=['LoongArchMMU'],
+    tags=['loongarch isa']
+)
+SimObject(
+    'LoongArchSeWorkload.py',
+    sim_objects=['LoongArchSEWorkload', 'LoongArchEmuLinux'],
+    tags=['loongarch isa']
+)
+SimObject(
+    'LoongArchTLB.py',
+    sim_objects=['LoongArchTLB'],
+    tags=['loongarch isa']
+)
+
+SimObject('LoongArchCPU.py', sim_objects=[], tags=['loongarch isa'])
+
+DebugFlag('LoongArch', tags=['loongarch isa'])
+
+ISADesc('isa/main.isa', tags=['loongarch isa'])
